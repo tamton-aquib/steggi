@@ -11,3 +11,5 @@ version: 0.0.18
    - [!] cleanify.
    - [ ] lsb
    - [ ] image combiner.
+   - [ ] styling.
+   - [ ] upload to pypi.

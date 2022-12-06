@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "steg"
+name = "steggi"
 version = "0.1.0"
 description = "Stegsolve like GUI program for steganographic purposes."
 authors = ["Aquib <aquibjavedt007@gmail.com>"]

@@ -1,6 +1,6 @@
 import cv2
 import tkinter as tk
-from steg import converters
+from steggi import converters
 from tkinter import filedialog
 from PIL import ImageTk, Image
 
@@ -21,7 +21,7 @@ class App(tk.Tk):
         menubar.add_cascade(label='File', menu=filemenu)
         menubar.add_cascade(label='Extract', menu=extractmenu)
 
-        self.frame = tk.Frame(self)
+        self.frame = tk.Frame(self, bg="#11121d")
         self.frame.pack()
 
         tk.Button(self.frame, text="Upload image!", command=self.upload_image).pack()
@@ -29,7 +29,8 @@ class App(tk.Tk):
 
     def upload_image(self):
         filename = filedialog.askopenfilename(filetypes=[("Jpg files", "*.jpg"), ("Png files", "*.png")])
-        self.img = cv2.imread(filename)
+        self.img: cv2.numpy.ndarray = cv2.imread(filename)
+        # self.img = cv2.resize(self.img, dsize=(self.frame.winfo_height(), self.frame.winfo_width()))
         self.h, self.w, _ = self.img.shape
 
         self.tk_img = ImageTk.PhotoImage(image=Image.fromarray(self.img))
@@ -38,7 +39,6 @@ class App(tk.Tk):
         canvas.pack()
 
         self.converter = converters.Converter(self, self.img)
-
 
     def change_frame(self):
         self.frame.forget()
