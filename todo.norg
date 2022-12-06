@@ -1,0 +1,13 @@
+@document.meta
+title: todo
+description: Todos for steggi
+created: 2022-12-06
+version: 0.0.18
+@end
+
+*  TODOS
+   - [ ] stereogram.
+   - [ ] planes? (alpha, etc)
+   - [!] cleanify.
+   - [ ] lsb
+   - [ ] image combiner.

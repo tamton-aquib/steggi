@@ -1,2 +1,3 @@
 # steggi
-Stegsolve like program in python with opencv and tkinter.
+
+Stegsolve like GUI program in python with opencv and tkinter.
