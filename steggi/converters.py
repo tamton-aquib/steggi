@@ -8,6 +8,7 @@ class Converter:
         self.h, self.w, _ = self.root.img.shape
 
         self.planes_set_label_canvas_buttons_binds()
+        self.packopts = {}
 
         self.idx = 0
         self.img_list = [

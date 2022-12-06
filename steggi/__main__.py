@@ -17,8 +17,8 @@ class App(tk.Tk):
         filemenu.add_command(label='Exit', command=self.destroy)
 
         extractmenu = tk.Menu(menubar, tearoff=False)
-        extractmenu.add_command(label='planes', command=lambda: self.change_frame(self.converter.frame))
-        extractmenu.add_command(label='extract', command=lambda: self.change_frame(self.extractor.frame))
+        extractmenu.add_command(label='planes', command=lambda: self.change_frame(self.converter))
+        extractmenu.add_command(label='extract', command=lambda: self.change_frame(self.extractor))
 
         menubar.add_cascade(label='File', menu=filemenu)
         menubar.add_cascade(label='Extract', menu=extractmenu)
@@ -46,11 +46,11 @@ class App(tk.Tk):
         self.converter = converters.Converter(self)
         self.extractor = extractors.Extractor(self)
 
-    def change_frame(self, frame: tk.Frame):
+    def change_frame(self, elem):
         self.frame.forget()
-        self.frame = frame
-        self.converter.refresh()
-        self.frame.pack()
+        self.frame = elem.frame
+        elem.refresh()
+        self.frame.pack(**elem.packopts)
         # self.frame.update()
 
 if __name__ == "__main__":

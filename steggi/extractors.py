@@ -9,6 +9,7 @@ class Extractor:
         self.h, self.w, _ = self.root.img.shape
 
         self.frame = tk.Frame(self.root)
+        self.packopts = {"side": "left"}
 
         exifdata = Image.fromarray(self.root.img.astype('uint8'), 'RGB').getexif()
         # exifdata = Image.open(self.root.filename).getexif()
@@ -23,4 +24,7 @@ class Extractor:
             self.result += f"{tagname:25}: {value}\n"
 
         self.label = tk.Label(self.frame, text=self.result)
-        self.label.pack(anchor='w', fill='x', side='left')
+        self.label.pack()
+
+    def refresh(self):
+        pass
