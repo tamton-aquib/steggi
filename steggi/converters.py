@@ -3,25 +3,24 @@ from PIL import ImageTk, Image
 import cv2
 
 class Converter:
-    def __init__(self, root, img) -> None:
-        self.img = img
+    def __init__(self, root) -> None:
         self.root = root
-        self.h, self.w, _ = self.img.shape
+        self.h, self.w, _ = self.root.img.shape
 
         self.planes_set_label_canvas_buttons_binds()
 
         self.idx = 0
         self.img_list = [
-            {'name': "normal", "data": self.img},
-            {'name': "xor", "data": 255 - self.img},
-            {"name": "greyscale", "data": cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)},
-            {"name": "hsv", "data": cv2.cvtColor(self.img, cv2.COLOR_BGR2HSV)},
-            # {"name": "laplacian", "data": cv2.Laplacian(self.img, cv2.CV_64F)},
-            {"name": "lab", "data": cv2.cvtColor(self.img, cv2.COLOR_BGR2LAB)},
-            {"name": "gaussian", "data": cv2.GaussianBlur(self.img, (7, 7), 0)},
-            {"name": "edges", "data": cv2.Canny(self.img, 100, 200)}, # NOTE: edge detection
-            {"name": "dst", "data": cv2.fastNlMeansDenoisingColored(self.img, None, 10, 10, 7, 15)}, # NOTE: looks nice
-            {"name": "bitwise_not", "data": cv2.bitwise_not(self.img)},
+            {'name': "normal", "data": self.root.img},
+            {'name': "xor", "data": 255 - self.root.img},
+            {"name": "greyscale", "data": cv2.cvtColor(self.root.img, cv2.COLOR_BGR2GRAY)},
+            {"name": "hsv", "data": cv2.cvtColor(self.root.img, cv2.COLOR_BGR2HSV)},
+            # {"name": "laplacian", "data": cv2.Laplacian(self.root.img, cv2.CV_64F)},
+            {"name": "lab", "data": cv2.cvtColor(self.root.img, cv2.COLOR_BGR2LAB)},
+            {"name": "gaussian", "data": cv2.GaussianBlur(self.root.img, (7, 7), 0)},
+            {"name": "edges", "data": cv2.Canny(self.root.img, 100, 200)}, # NOTE: edge detection
+            {"name": "dst", "data": cv2.fastNlMeansDenoisingColored(self.root.img, None, 10, 10, 7, 15)}, # NOTE: looks nice
+            {"name": "bitwise_not", "data": cv2.bitwise_not(self.root.img)},
         ]
 
     def planes_set_label_canvas_buttons_binds(self):

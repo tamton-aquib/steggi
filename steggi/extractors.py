@@ -1,15 +1,26 @@
 import tkinter as tk
+from PIL import Image
+from PIL.ExifTags import TAGS
+import os
 
 class Extractor:
-    def __init__(self, root, img) -> None:
-        self.img = img
+    def __init__(self, root) -> None:
         self.root = root
-        self.h, self.w, _ = self.img.shape
+        self.h, self.w, _ = self.root.img.shape
 
-        self.planes_set_label_canvas_buttons_binds()
-
-    def planes_set_label_canvas_buttons_binds(self):
         self.frame = tk.Frame(self.root)
 
-        self.label = tk.Label(self.frame, text='Hallllo from Extractor!')
-        self.label.pack()
+        exifdata = Image.fromarray(self.root.img.astype('uint8'), 'RGB').getexif()
+        # exifdata = Image.open(self.root.filename).getexif()
+
+        self.result = ""
+        self.result += f"{'Filename: ':25} {os.path.basename(self.root.filename)}\n"
+        self.result += f"{'Directory: ':25} {os.path.dirname(self.root.filename)}"
+
+        for tagid in exifdata:
+            tagname = TAGS.get(tagid, tagid)
+            value = exifdata.get(tagid)
+            self.result += f"{tagname:25}: {value}\n"
+
+        self.label = tk.Label(self.frame, text=self.result)
+        self.label.pack(anchor='w', fill='x', side='left')

@@ -33,8 +33,8 @@ class App(tk.Tk):
         cv2.imwrite(filename, self.img)
 
     def upload_image(self):
-        filename = filedialog.askopenfilename(filetypes=[("Jpg files", "*.jpg"), ("Png files", "*.png")])
-        self.img: cv2.numpy.ndarray = cv2.imread(filename)
+        self.filename = filedialog.askopenfilename(filetypes=[("Jpg files", "*.jpg"), ("Png files", "*.png")])
+        self.img: cv2.numpy.ndarray = cv2.imread(self.filename)
         self.h, self.w, self.c = self.img.shape
 
         self.canvas = tk.Canvas(self.frame, width=self.w, height=self.h)
@@ -43,14 +43,15 @@ class App(tk.Tk):
         self.canvas.create_image(self.h/2, self.w/2, image=self.tk_img)
         self.canvas.pack()
 
-        self.converter = converters.Converter(self, self.img)
-        self.extractor = extractors.Extractor(self, self.img)
+        self.converter = converters.Converter(self)
+        self.extractor = extractors.Extractor(self)
 
     def change_frame(self, frame: tk.Frame):
         self.frame.forget()
         self.frame = frame
-        self.frame.pack()
         self.converter.refresh()
+        self.frame.pack()
+        # self.frame.update()
 
 if __name__ == "__main__":
     app = App()

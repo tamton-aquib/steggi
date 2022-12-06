@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.10"
 opencv-python = "^4.6.0.66"
 pillow = "^9.3.0"
+tk = "^0.1.0"
 
 [build-system]
 requires = ["poetry-core"]
