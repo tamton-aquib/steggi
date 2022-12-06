@@ -26,7 +26,6 @@ class Converter:
 
     def planes_set_label_canvas_buttons_binds(self):
         self.frame = tk.Frame(self.root)
-        # self.frame.pack()
 
         self.label = tk.Label(self.frame, text='Normal')
         self.label.pack()
