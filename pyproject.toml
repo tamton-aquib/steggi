@@ -2,8 +2,11 @@
 name = "steggi"
 version = "0.1.0"
 description = "Stegsolve like GUI program for steganographic purposes."
+homepage = "https://github.com/tamton-aquib/steggi"
+documentation = "https://github.com/tamton-aquib/steggi"
 authors = ["Aquib <aquibjavedt007@gmail.com>"]
 readme = "README.md"
+keywords = ["GUI", "tkinter", "opencv", "steganogrpahy", "image processing", "stegsolve"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -14,3 +17,6 @@ tk = "^0.1.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+steggi = "steggi.main:main"
