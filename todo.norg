@@ -1,11 +1,11 @@
 @document.meta
-title: todo
+title: Todo
 description: Todos for steggi
 created: 2022-12-06
 version: 0.0.18
 @end
 
-*  TODOS
+*  To-Do's
    - ( ) stereogram.
    - ( ) planes? (alpha, etc)
    - (!) cleanify.
