@@ -1,6 +1,6 @@
 import cv2
 import tkinter as tk
-from . import converters, extractors
+from steggi import converters, extractors, combiners
 from tkinter import filedialog
 from PIL import ImageTk, Image
 
@@ -19,6 +19,7 @@ class App(tk.Tk):
         extractmenu = tk.Menu(menubar, tearoff=False)
         extractmenu.add_command(label='planes', command=lambda: self.change_frame(self.converter))
         extractmenu.add_command(label='extract', command=lambda: self.change_frame(self.extractor))
+        extractmenu.add_command(label='combine', command=lambda: self.change_frame(self.combiner))
 
         menubar.add_cascade(label='File', menu=filemenu)
         menubar.add_cascade(label='Extract', menu=extractmenu)
@@ -37,7 +38,7 @@ class App(tk.Tk):
         self.img: cv2.numpy.ndarray = cv2.imread(self.filename)
         self.h, self.w, self.c = self.img.shape
 
-        self.canvas = tk.Canvas(self.frame, width=self.w, height=self.h)
+        self.canvas = tk.Canvas(self.frame, width=self.w, height=self.h, scrollregion=(0, 0, self.w, self.h))
         # cv2.resize(self.img, dsize=(self.canvas.winfo_height(), self.canvas.winfo_width()))
         self.tk_img = ImageTk.PhotoImage(image=Image.fromarray(self.img))
         self.canvas.create_image(self.h/2, self.w/2, image=self.tk_img)
@@ -45,6 +46,7 @@ class App(tk.Tk):
 
         self.converter = converters.Converter(self)
         self.extractor = extractors.Extractor(self)
+        self.combiner = combiners.Combiner(self)
 
     def change_frame(self, elem):
         self.frame.forget()

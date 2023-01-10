@@ -6,10 +6,10 @@ version: 0.0.18
 @end
 
 *  TODOS
-   - [ ] stereogram.
-   - [ ] planes? (alpha, etc)
-   - [!] cleanify.
-   - [ ] lsb
-   - [ ] image combiner.
-   - [ ] styling.
-   - [ ] upload to pypi.
+   - ( ) stereogram.
+   - ( ) planes? (alpha, etc)
+   - (!) cleanify.
+   - ( ) lsb
+   - ( ) image combiner.
+   - ( ) styling.
+   - ( ) upload to pypi.
