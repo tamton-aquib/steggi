@@ -1,4 +1,5 @@
-noice.json
 test.jpg
+__pycache__
 steggi/__pycache__
+steggi/*/__pycache__
 dist

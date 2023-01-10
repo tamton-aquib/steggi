@@ -1,6 +1,6 @@
 import cv2
 import tkinter as tk
-from steggi import converters, extractors, combiners
+from steggi.models import converters, extractors, combiners
 from tkinter import filedialog
 from PIL import ImageTk, Image
 
